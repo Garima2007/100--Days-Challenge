@@ -1,31 +1,28 @@
-// Q28: Write a program to print the product of even numbers from 1 to n.
+// Q29: Write a program to calculate the factorial of a number.
 
 /*
 Sample Test Cases:
 Input 1:
-4
+5
 Output 1:
-8 (2 * 4)
+120
 
 Input 2:
-6
+3
 Output 2:
-48 (2 * 4 * 6)
+6
 
 */
-#include <stdio.h>
-
+#include<stdio.h>
 int main()
 {
-    int n, i;
-    long long product = 1; 
-
-    printf("Enter value of n: ");
+    int n, i, factorial=1;
+    printf("enter value of n: ");
     scanf("%d", &n);
-    for (i = 2; i <= n; i += 2) 
-    {
-        product *= i;
-    }
-    printf("Product of even numbers from 1 to %d = %lld\n", n, product);
+    for(i=1; i<= n; i++)
+    {                       
+    factorial *= i;
+    }                
+    printf("factorial of %d is %d", n, factorial);
     return 0;
 }
