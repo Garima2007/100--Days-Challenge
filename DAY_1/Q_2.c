@@ -14,4 +14,5 @@ int main(){
     {
       printf("Quotient is undefined\n");
     }
+    return 0;
 }
