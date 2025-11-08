@@ -45,4 +45,5 @@ else if ( n >= 33 && n < 40)
 printf("PASS");
 else
 printf("Please try again");
+return 0;
 }
