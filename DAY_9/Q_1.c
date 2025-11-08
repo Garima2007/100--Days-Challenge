@@ -31,11 +31,11 @@ int main() {
 
     if (discriminant > 0) {
         R1 = (-b + sqrt(discriminant)) / (2*a);
-        R1 = (-b - sqrt(discriminant)) / (2*a);
+        R2 = (-b - sqrt(discriminant)) / (2*a);
         printf("Roots are real and different: %.2f, %.2f", R1, R1);
     }
     else if (discriminant == 0) {
-        R1 = -b / (2*a);
+        R2 = R1 = -b / (2*a);
         printf("Roots are real and same: %.2f", R1);
     }
     else {
