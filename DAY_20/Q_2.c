@@ -1,22 +1,24 @@
-// Q42: Write a program to check if a number is a perfect number.
-#include<stdio.h>
+// Q40: Write a program to find the 1’s complement of a binary number and print it.
+#include <stdio.h>
+#include <string.h>
 int main()
 {
-    int n, i, sum = 0;
-    printf("Enter a number: ");
-    scanf("%d", &n);
-
-    for (i = 1; i <= n/2; i++)  
+    char binary[100];
+    int i;
+    printf("Enter a binary number: ");
+    scanf("%s", binary);
+    for (i = 0; binary[i] != '\0'; i++)
     {
-        if (n % i == 0) {
-            sum = sum + i;  
+        if (binary[i] == '0')
+            binary[i] = '1';
+        else if (binary[i] == '1')
+            binary[i] = '0';
+        else
+        {
+            printf("Invalid binary number!\n");
+            return 0;
         }
     }
-
-    if (sum == n && n > 0)
-        printf("Perfect number\n");
-    else
-        printf("Not perfect number\n");
-
+    printf("1's complement: %s\n", binary);
     return 0;
 }
