@@ -9,45 +9,48 @@ Displays employee data read from file.
 
 */
 #include <stdio.h>
+#include <string.h>
 
-struct Employee {
-    char name[50];
+struct Item {
     int id;
-    float salary;
+    char name[20];
+    float price;
 };
 
+typedef enum {
+    NOT_IDENTICAL,
+    IDENTICAL
+} CompareResult;
+
+CompareResult are_identical(struct Item item1, struct Item item2) {
+    if (item1.id != item2.id) {
+        return NOT_IDENTICAL;
+    }
+    if (item1.price != item2.price) {
+        return NOT_IDENTICAL;
+    }
+    if (strcmp(item1.name, item2.name) != 0) {
+        return NOT_IDENTICAL;
+    }
+    return IDENTICAL;
+}
+
 int main() {
-    FILE *fp;
-    struct Employee emp;
+    struct Item a = {101, "Laptop", 1200.50};
+    struct Item b = {101, "Laptop", 1200.50};
+    struct Item c = {102, "Mouse", 25.00};
 
-    printf("Enter employee details:\n");
-    printf("Name: ");
-    scanf("%s", emp.name);
-    printf("ID: ");
-    scanf("%d", &emp.id);
-    printf("Salary: ");
-    scanf("%f", &emp.salary);
-
-    fp = fopen("employee.dat", "wb");
-    if (fp == NULL) {
-        printf("Error opening file.\n");
-        return 1;
+    if (are_identical(a, b) == IDENTICAL) {
+        printf("Struct a and Struct b are IDENTICAL.\n");
+    } else {
+        printf("Struct a and Struct b are NOT identical.\n");
     }
 
-    fwrite(&emp, sizeof(struct Employee), 1, fp);
-    fclose(fp);
-
-    fp = fopen("employee.dat", "rb");
-    if (fp == NULL) {
-        printf("Error opening file.\n");
-        return 1;
+    if (are_identical(a, c) == IDENTICAL) {
+        printf("Struct a and Struct c are IDENTICAL.\n");
+    } else {
+        printf("Struct a and Struct c are NOT identical.\n");
     }
-
-    fread(&emp, sizeof(struct Employee), 1, fp);
-    fclose(fp);
-
-    printf("Employee data read from file:\n");
-    printf("Name: %s \n  ID: %d \n  Salary: %.2f\n", emp.name, emp.id, emp.salary);
 
     return 0;
 }
