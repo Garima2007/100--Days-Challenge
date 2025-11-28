@@ -12,22 +12,49 @@ Same
 #include <stdio.h>
 #include <string.h>
 
+enum Field { NAME, ROLL, MARKS };
+
 struct Student {
     char name[50];
     int roll_no;
     int marks;
 };
 
+void printHeading(enum Field f) {
+    switch(f) {
+        case NAME:  printf("Name: ");  break;
+        case ROLL:  printf("Roll: ");  break;
+        case MARKS: printf("Marks: "); break;
+    }
+}
+
 int main() {
     struct Student s1, s2;
 
-    printf("Enter details of Student 1:\n");
-    scanf("%s %d %d", s1.name, &s1.roll_no, &s1.marks);
+    printf("----- Enter Student 1 Details -----\n");
+    printHeading(NAME);
+    scanf("%s", s1.name);
 
-    printf("Enter details of Student 2:\n");
-    scanf("%s %d %d", s2.name, &s2.roll_no, &s2.marks);
+    printHeading(ROLL);
+    scanf("%d", &s1.roll_no);
 
-    if (strcmp(s1.name, s2.name) == 0 && s1.roll_no == s2.roll_no && s1.marks == s2.marks)
+    printHeading(MARKS);
+    scanf("%d", &s1.marks);
+
+    printf("\n----- Enter Student 2 Details -----\n");
+    printHeading(NAME);
+    scanf("%s", s2.name);
+
+    printHeading(ROLL);
+    scanf("%d", &s2.roll_no);
+
+    printHeading(MARKS);
+    scanf("%d", &s2.marks);
+
+    printf("\n----- Result -----\n");
+    if (strcmp(s1.name, s2.name) == 0 &&
+        s1.roll_no == s2.roll_no &&
+        s1.marks == s2.marks)
         printf("Same\n");
     else
         printf("Different\n");
