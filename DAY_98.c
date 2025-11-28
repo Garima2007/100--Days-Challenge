@@ -47,7 +47,7 @@ int main() {
     fclose(fp);
 
     printf("Employee data read from file:\n");
-    printf("Name: %s | ID: %d | Salary: %.2f\n", emp.name, emp.id, emp.salary);
+    printf("Name: %s \n  ID: %d \n  Salary: %.2f\n", emp.name, emp.id, emp.salary);
 
     return 0;
 }
