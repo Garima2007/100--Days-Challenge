@@ -10,31 +10,32 @@ Topper: Ravi (Marks: 95)
 */
 #include <stdio.h>
 
+typedef enum { NOT_HIGHER, HIGHER } CompareResult;
+
 struct Student {
     char name[50];
     int roll_no;
     int marks;
 };
 
+CompareResult is_higher(int a, int b) {
+    return (a > b) ? HIGHER : NOT_HIGHER;
+}
+
 int main() {
     int n, i, topperIndex = 0;
-    printf("Enter number of students: ");
     scanf("%d", &n);
 
     struct Student students[n];
 
     for (i = 0; i < n; i++) {
-        printf("Enter details for student %d:\n", i + 1);
-        printf("Name: ");
         scanf("%s", students[i].name);
-        printf("Roll: ");
         scanf("%d", &students[i].roll_no);
-        printf("Marks: ");
         scanf("%d", &students[i].marks);
     }
 
     for (i = 1; i < n; i++) {
-        if (students[i].marks > students[topperIndex].marks)
+        if (is_higher(students[i].marks, students[topperIndex].marks) == HIGHER)
             topperIndex = i;
     }
 
