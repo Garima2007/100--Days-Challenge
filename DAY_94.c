@@ -10,6 +10,8 @@ Name: Neha | Roll: 104 | Marks: 92
 */
 #include <stdio.h>
 
+typedef enum { NAME, ROLL, MARKS } FieldType;
+
 struct Student {
     char name[50];
     int roll_no;
@@ -25,7 +27,7 @@ int main() {
 
     printf("Enter student details:\n");
     printf("Name: ");
-    scanf("%s", s.name);
+    scanf("%49s", s.name);
     printf("Roll: ");
     scanf("%d", &s.roll_no);
     printf("Marks: ");
